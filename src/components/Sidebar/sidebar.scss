@@ -1,0 +1,163 @@
+$opened-sidebar-width: 170px;
+$closed-sidebar-width: 38px;
+
+$border-grey: #f0f2f7;
+$font-color: #858fa2;
+$active-font-color: #154dc0;
+$active-item-color: #f1f1ff;
+$hover-item-color: #f0f2f7;
+$hover-font-color: #272f3a;
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  width: $closed-sidebar-width;
+  min-height: 75vh;
+  padding: 20px 10px;
+
+  background-color: #ffffff;
+  border-radius: 15px;
+  border-color: $border-grey;
+  border-style: solid;
+  border-width: 5px;
+
+  font-family: "Figtree", sans-serif;
+  font-optical-sizing: auto;
+  font-size: 0.95rem;
+  font-weight: 800;
+  font-style: normal;
+
+  transition-delay: 0.3s;
+  transition: width 0.2s ease;
+
+  &.opened {
+    width: $opened-sidebar-width;
+    padding: 20px;
+  }
+
+  .logo {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+
+    height: 40px;
+    padding: 0 5px;
+    margin-bottom: 30px;
+
+    font-size: 1.1rem;
+
+    color: $active-font-color;
+
+    img {
+      width: 30px;
+    }
+
+    button {
+      position: absolute;
+      left: 110px;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      height: 25px;
+      width: 25px;
+
+      border-radius: 25px;
+      border-style: none;
+      background-color: #ffffff;
+      color: $font-color;
+      cursor: pointer;
+
+      transition: transform 0.2s;
+
+      .sidebar-arrow {
+        transition: transform 0.2s;
+      }
+    }
+
+    span {
+      width: 0;
+      margin-left: 40px;
+
+      opacity: 0;
+      overflow: hidden;
+
+      transition: opacity 0.2s ease, width 0.2s ease, margin-left 0.2s;
+    }
+
+    &.opened {
+      padding: 0;
+
+      button {
+        position: absolute;
+
+        height: 25px;
+        width: 25px;
+
+        border-radius: 25px;
+        border-style: none;
+        background-color: #e3e8f1;
+        color: $font-color;
+
+        transform: translate(100px, 0px);
+
+        .sidebar-arrow {
+          transform: rotate(180deg)
+        }
+      }
+
+      span {
+        width: 100px;
+        margin-left: 5px;
+
+        opacity: 1;
+      }
+    }
+  }
+
+  .sidebar-item {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+
+    padding: 0 10px;
+    margin-bottom: 5px;
+    height: 40px;
+
+    color: $font-color;
+    border-radius: 15px;
+    cursor: pointer;
+
+    span {
+      width: 0;
+      margin-left: 40px;
+
+      opacity: 0;
+      overflow: hidden;
+
+      transition: opacity 0.2s ease, width 0.2s ease, margin-left 0.2s;
+    }
+
+    &:hover {
+      background-color: $hover-item-color;
+      color: $hover-font-color
+    }
+
+    &.active {
+      background-color: $active-item-color;
+      color: $active-font-color
+    }
+
+    &.opened {
+      span {
+        width: 100px;
+        margin-left: 15px;
+
+        opacity: 1;
+      }
+    }
+  }
+}
